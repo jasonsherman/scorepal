@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Cabin" />
+    <link  rel="stylesheet" href="https://fonts.cdnfonts.com/css/ocr-a-std">
+    <link rel="icon" href="https://score.spinnr.app/img/truth-spinn-logo.jpg">
+    <meta property="og:title" content="Spinnr's Truth or Spinn Scoreboard"/>
+    <meta property="og:image" content="https://score.spinnr.app/img/truth-spinn-logo.jpg"/>
+    <meta property="og:description" content="Keep score of Truth or Spinn and play our fun game by using the Spinnr app!"/>
+    <meta property="og:url" content="https://score.spinnr.app"/>
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <title>Truth or Spinnn Scoreboard</title>
+    <script src="main.js"></script>
+</head>
+<body id="body">
+    
+    <picture id="banner">
+        <source media="(max-width: 550px)" srcset="img/spinnr-banner-mobile.png">
+        <img id="banner-image" src="img/spinnr-banner.png">
+    </picture>
+    
+
+    <div class="main">
+            <input type="checkbox" id="menu-check" />
+            <nav id="sidebar">
+                <img src="img/Spinnr-logo-pink.png" id="logo">
+                <a href="https://spinnr.app" target="_blank" class="menu">Home</a>
+                <a href="https://apple.spinnr.app" target="_blank" class="menu">iPhone</a>
+                <a href="https://android.spinnr.app" target="_blank" class="menu">Android</a>
+                <a href="https://shop.spinnr.app" target="_blank" class="menu">Shop</a>
+                <a href="https://spinnr.app/contact-us" target="_blank" class="menu">Contact</a>
+            </nav>
+            <input type="checkbox" id="menu-check" />
+            <label for="menu-check" id="label-menu">
+                <div class="barra" id="top"></div>
+                <div class="barra" id="middle1"></div>
+                <div class="barra" id="middle2"></div>
+                <div class="barra"id="bot"></div>
+            </label>
+
+
+        <div class="scoreboard">
+            <div class="playernumber">
+                <button class="remove-player" id="removeplayerbtn" onclick="removeplayer()">-</button>
+                <img src="img/player.png" id="player-icon">
+                <button class="add-player" id="addplayerbtn" onclick="addplayer()">+</button>
+            </div>
+                <div class="player" id="player1">
+                    <div class="line-name">
+                        <textarea autosize class="name-field" onClick="this.select();" placeholder="Player 1" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score1" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(1)">-</button>
+                        <button class="add" onclick="add(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player2">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 2" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score2" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(2)">-</button>
+                        <button class="add" onclick="add(2)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player3">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 3" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score3" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(3)">-</button>
+                        <button class="add" onclick="add(3)">+</button>
+                    </div>
+                </div>
+            
+                <div class="player" id="player4">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 4" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score4" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(4)">-</button>
+                        <button class="add" onclick="add(4)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player5">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 5" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score5" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(5)">-</button>
+                        <button class="add" onclick="add(5)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player6">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 6" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score6" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(6)">-</button>
+                        <button class="add" onclick="add(6)">+</button>
+                    </div>
+                </div>
+            
+                <div class="player" id="player7">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 7" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score7" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(7)">-</button>
+                        <button class="add" onclick="add(7)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player8">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 8" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score8" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(8)">-</button>
+                        <button class="add" onclick="add(8)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player9">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 9" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score9" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(9)">-</button>
+                        <button class="add" onclick="add(9)">+</button>
+                    </div>
+                </div>
+            
+                <div class="player" id="player10">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 10" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score10" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(10)">-</button>
+                        <button class="add" onclick="add(10)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player11">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 11" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score11" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(11)">-</button>
+                        <button class="add" onclick="add(11)">+</button>
+                    </div>
+                </div>
+
+                <div class="player" id="player12">
+                    <div class="line-name">
+                        <textarea class="name-field" onClick="this.select();" placeholder="Player 12" cols="30" rows="1"></textarea>
+                    </div>
+                    <div class="line-score">
+                        <input type="number" onClick="this.select();" max="9999" class="score" id="score12" value="0" placeholder="0">
+                    </div>
+                    <div class="line-add-sub">
+                        <button class="sub" onclick="subtract(12)">-</button>
+                        <button class="add" onclick="add(12)">+</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>
