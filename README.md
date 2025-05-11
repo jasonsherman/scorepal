@@ -1,4 +1,4 @@
-# 🎮 Universal Game Scorekeeper 🏆
+# 🎮 ScorePal - Universal Game Scorekeeper 🏆
 
 A fun and flexible scorekeeping web app that works for any game! Originally created for the Truth or Spinn card game, but customizable for any game you want to play. Try it live at [score.spinnr.app](https://score.spinnr.app)!
 
