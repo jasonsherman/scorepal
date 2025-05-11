@@ -1,7 +1,7 @@
 function subtract(num) {
     var number = document.getElementById("score" + num).value;
     number--;
-    document.getElementById("score" + num).value = number;    
+    document.getElementById("score" + num).value = number;
 }
 
 function add(num) {
@@ -10,11 +10,28 @@ function add(num) {
     document.getElementById("score" + num).value = number;
 }
 
-var playernumber = 6;
+var playernumber = 4;
+
+function updatePlayerCount() {
+    document.getElementById("playercount").textContent = playernumber;
+}
+
+// Function to initialize player visibility
+function initializePlayers() {
+    // Hide all players first
+    for (let i = 1; i <= 12; i++) {
+        document.getElementById("player" + i).style.display = 'none';
+    }
+
+    // Show only the first 4 players
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById("player" + i).style.display = 'flex';
+    }
+}
 
 function removeplayer() {
-
     playernumber--;
+    updatePlayerCount();
 
     if (playernumber == 11) {
         document.getElementById("player12").style.display = 'none'
@@ -31,7 +48,7 @@ function removeplayer() {
         var players = document.getElementsByClassName("players2");
 
         for (var i = 0; i < players.length; i++) {
-             players[i].classList.remove("players3");
+            players[i].classList.remove("players3");
         }
     }
 
@@ -41,7 +58,7 @@ function removeplayer() {
 
         for (var i = 0; i < players.length; i++) {
             players[i].classList.remove("players2");
-       }
+        }
     }
 
     if (playernumber == 7) {
@@ -85,8 +102,8 @@ function removeplayer() {
 }
 
 function addplayer() {
-
     playernumber++;
+    updatePlayerCount();
 
     if (playernumber == 3) {
         document.getElementById("player3").style.display = 'flex'
@@ -135,7 +152,7 @@ function addplayer() {
 
         for (var i = 0; i < players.length; i++) {
             players[i].classList.add("players2");
-       }
+        }
 
     }
 
@@ -145,7 +162,7 @@ function addplayer() {
         var players = document.getElementsByClassName("players2");
 
         for (var i = 0; i < players.length; i++) {
-             players[i].classList.add("players3");
+            players[i].classList.add("players3");
         }
     }
 
@@ -157,5 +174,76 @@ function addplayer() {
         document.getElementById("player12").style.display = 'flex'
         var addbtn = document.getElementById("addplayerbtn");
         addbtn.disabled = true;
+    }
+}
+
+// Initialize player count and visibility on page load
+document.addEventListener('DOMContentLoaded', function () {
+    initializePlayers();
+    updatePlayerCount();
+});
+
+// Theme toggle logic
+function setTheme(mode) {
+    if (mode === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.getElementById('themeIcon').textContent = '🌙';
+    } else {
+        document.documentElement.removeAttribute('data-theme');
+        document.getElementById('themeIcon').textContent = '☀️';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Theme toggle
+    let currentTheme = 'dark';
+    setTheme(currentTheme);
+    document.getElementById('themeToggle').addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        setTheme(currentTheme);
+    });
+});
+
+// Share button functionality
+function shareScores() {
+    const shareData = {
+        title: 'ScorePal',
+        text: 'Check out ScorePal for your next game night!',
+        url: window.location.href
+    };
+    if (navigator.share) {
+        navigator.share(shareData).catch(() => { });
+    } else {
+        // Fallback: copy URL to clipboard
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showShareMessage('Link copied to clipboard!');
+        });
+    }
+}
+
+function showShareMessage(msg) {
+    let msgDiv = document.createElement('div');
+    msgDiv.textContent = msg;
+    msgDiv.style.position = 'fixed';
+    msgDiv.style.bottom = '2.5rem';
+    msgDiv.style.right = '2.5rem';
+    msgDiv.style.background = 'var(--primary)';
+    msgDiv.style.color = 'white';
+    msgDiv.style.padding = '0.7em 1.5em';
+    msgDiv.style.borderRadius = '30px';
+    msgDiv.style.fontSize = '1.1rem';
+    msgDiv.style.zIndex = 9999;
+    msgDiv.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+    document.body.appendChild(msgDiv);
+    setTimeout(() => { msgDiv.remove(); }, 2000);
+}
+
+function resetScores() {
+    for (let i = 1; i <= 12; i++) {
+        const playerDiv = document.getElementById('player' + i);
+        if (playerDiv && playerDiv.style.display !== 'none') {
+            const scoreInput = document.getElementById('score' + i);
+            if (scoreInput) scoreInput.value = 0;
+        }
     }
 }
